@@ -1,0 +1,133 @@
+
+ {% load staticfiles %}
+
+<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel = "stylesheet" type = "text/css" href = "{% static 'politics/style.css' %}" />
+<link href = 'https:://fonts.googleapis.com/css?family=Satisfy' rel = 'stylesheet' type = 'text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+
+<nav class= "navbar navbar-inverse">
+<div class = "container-fluid">
+    <div class="navbar-header">
+    
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target = "#topNavBar">
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+        </button>
+        <a class = "navbar-brand" href="{% url 'politics:index' %}">Opinionated</a>
+    </div>
+    
+    <div class = "collapse navbar-collapse" id="topNavBar">
+        <ul class = "nav navbar-nav">
+            <li class = "active">
+                <a href="{% url 'politics:index' %}">
+                <span class = "glyphicon glyphicon-flag" aria-hidden="true"></span>&nbsp; Politics
+                </a>
+            </li>
+                <li class = "">
+                <a href="#">
+                <span class = "glyphicon glyphicon-phone" aria-hidden="true"></span>&nbsp; Science & Technology
+                </a>
+            </li>
+            </li>
+                <li class = "">
+                <a href="#">
+                <span class = "glyphicon glyphicon-headphones" aria-hidden="true"></span>&nbsp; Gaming
+                </a>
+            </li>
+            </li>
+                <li class = "">
+                <a href="#">
+                <span class = "glyphicon glyphicon-Book" aria-hidden="true"></span>&nbsp; Education
+                </a>
+            </li>
+        </ul>
+        <form class = "navbar-form navbar-left" role = "search" method = "get" action = "#">
+            <div class = "form-group">
+                <input type = "text" class = "form-control" name="q" value="">
+            </div>
+            <button type = "submit" class="btn btn-default">Search</button>
+        </form>
+        
+        <ul class = "nav navbar-nav navbar-right">
+        </li>
+                <li class = "">
+                <a href="{% url 'politics:debate-add' %}">
+                <span class = "glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Upload Debate
+                </a>
+            </li>
+            </li>
+                <li class = "">
+                <a href="/profile/view">
+                <span class = "glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Profile
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+    
+</div>
+</nav>
+
+
+
+<div class="debates-container container-fluid">
+
+    <!-- Debates -->
+
+        {% if object_list %}
+            {% for debate in object_list %}
+                <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="{% url 'politics:detail' debate.id %}">
+                            <img src="{{ debate.picture.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ debate.title }}</h2>
+                            <h4>{{ debate.username }}</h4>
+
+                            <!-- View Details -->
+                            <a href="{% url 'politics:detail' debate.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                            <!-- Delete Album -->
+                            <form action="#" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="debate_id" value="{{ debate.id }}" />
+                                <button type="submit" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </form>
+
+                            <!-- Favorite Debate -->
+                            <a href="#" class="btn btn-default btn-sm btn-favorite">
+                                <span class="glyphicon glyphicon-star {% if debate.is_favorite %}active{% endif %}"></span>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <div class="col-sm-12">
+                <br>
+                <a href="#">
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span>&nbsp; Add a debate
+                    </button>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+
+ 
+
+ 
