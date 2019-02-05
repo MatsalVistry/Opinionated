@@ -9,6 +9,8 @@ class RegistrationForm(UserCreationForm):
         model = User
         fields = {
             'username',
+            'first_name',
+            'last_name',
             'email',
             'password1',
             'password2'
@@ -18,6 +20,8 @@ class RegistrationForm(UserCreationForm):
     def save(self, commit=True):
         user = super(RegistrationForm, self).save(commit=False)
         user.email = self.cleaned_data['email']
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
         
         if commit:
             user.save()

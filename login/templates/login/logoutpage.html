@@ -76,29 +76,15 @@
 	    <br>
 		 <br>
 		  <br>
-  <h2>Sign in</h2>
-  <p style="color: Black">Please Enter a Valid Username and Password</p>
+  <h2>Sign out</h2>
+  <p style="color: Black">You Are Successfully Logged Out</p>
   <link rel="stylesheet" href="{% static 'loginbackgroundimage.css' %}">
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">This Section is Required</p>
-          
-        {% endfor %}
-      </p>
-	   <br>
-    {% endfor %}
+  <center>
 	<link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onClick = document.forms[0].submit()>
-	Login
+	<div id="bttn" onclick="location.href = '/login/loginpage';">
+	Click To Log In
 	</div>
-  </form>
+	</center>
+ 
  </center>
 
