@@ -64,10 +64,10 @@
 <div class="container">
 	<title>Profile</title>
 	<center>
-	<img src="/static/OhYeahYeah.jpg" width = "240">
 	<br>
 	<br>
 	<br>
+	<img src="{{ user.userprofile.image.url}}" width ="240"/>
 	<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">Username:	{{user}}</p>
 	<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">First name:	{{user.first_name}}</p>
 	<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;"> Last name:	{{user.last_name}}</p>

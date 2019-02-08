@@ -7,7 +7,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=True)
     description = models.CharField(max_length=100, default='')
     phone = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='profile_image',blank=True)
+    image = models.ImageField(default = 'default.png',blank=True)
     
 def create_profile(sender, **kwargs):
     if kwargs['created']:
