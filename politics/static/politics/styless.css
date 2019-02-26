@@ -1,0 +1,32 @@
+body{
+    background-color: black;
+   /* background: white url("images/paper-22.jpg");*/
+    
+    
+}
+.panel-default{
+	background-color: #333232;
+}
+.thumbnail{
+	background-color: #333232;
+	text-color: white;
+}
+.thumbnail h1{
+    color:#adadad;
+    font-size: 48px;
+}
+.thumbnail h2{    
+    color:black ;
+}
+form, input, label, p {
+    color: #adadad !important;
+}
+.navbar-inverse .navbar-brand {
+    color: #570093;
+}
+.panel-body{
+	  color:#adadad;
+}
+.table{
+	  color:#adadad;
+}

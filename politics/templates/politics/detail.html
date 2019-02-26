@@ -2,7 +2,7 @@
  {% load staticfiles %}
 
 <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel = "stylesheet" type = "text/css" href = "{% static 'politics/style.css' %}" />
+<link rel = "stylesheet" type = "text/css" href = "{% static 'politics/styless.css' %}" />
 <link href = 'https:://fonts.googleapis.com/css?family=Satisfy' rel = 'stylesheet' type = 'text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -87,14 +87,11 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{% url 'politics:detail' debate.id %}">
-                        {% if debate.picture %}
-                            <img src="{{ debate.picture.url }}" class="img-responsive">
-                        {% else %}
-                            <h3>No image to display</h3>
-                        {% endif %}
+                  
                     </a>
                     <h1>{{ debate.title }} <small>{{ debate.genre }}</small></h1>
-                    <h2>{{ debate.username }}</h2>
+                    <h3>{{ debate.username }}</h3>
+                    <h4>{{ debate.description }}</h4>
                 </div>
             </div>
         </div>

@@ -3,13 +3,10 @@ from django.urls import reverse
 
 class Debate(models.Model):
     username = models.CharField(max_length =20 , blank=True, default='')
+    description = models.CharField(max_length =300 , blank=True, default='')
     title = models.CharField(max_length = 200, blank=True, default='')
     date = models.CharField(max_length =10, blank=True, default='')
-    #maybe add tags or hashtags
     genre = models.CharField(max_length = 20, blank=True, default='')
-    #background
-    picture = models.FileField()
-    #profile picture
     pfp = models.CharField(max_length =12, blank=True, default='')
     
     def __str__(self):
