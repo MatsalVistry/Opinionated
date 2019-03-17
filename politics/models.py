@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Debate(models.Model):
     username = models.CharField(max_length =20 , blank=True, default='')
@@ -8,6 +9,8 @@ class Debate(models.Model):
     date = models.CharField(max_length =10, blank=True, default='')
     genre = models.CharField(max_length = 20, blank=True, default='')
     pfp = models.CharField(max_length =12, blank=True, default='')
+    likes = models.ManyToManyField(User, related_name='likes', blank = True)
+    
     
     def __str__(self):
         return self.title + ' - ' + self.username
@@ -36,8 +39,3 @@ class Voting(models.Model):
     debate2 = models.ForeignKey(Debate, on_delete= models.CASCADE)
     pro = models.IntegerField()
     con = models.IntegerField()
-    
-class Likes(models.Model):
-    comments = models.ForeignKey(Comments, on_delete= models.CASCADE)
-    like = models.IntegerField()
-    dislike = models.IntegerField()

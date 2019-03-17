@@ -75,6 +75,7 @@
 
 
 
+<link rel="stylesheet" href="{% static 'detail.css' %}">
 
 
 
@@ -84,8 +85,7 @@
 
         <!-- Left Debate Info -->
         <div class="col-sm-4 col-md-3">
-            <div class="panel panel-default">
-                <div class="panel-body">
+                <div class="thumbnail">
                     <a href="{% url 'politics:detail' debate.id %}">
                   
                     </a>
@@ -93,7 +93,6 @@
                     <h3>{{ debate.username }}</h3>
                     <h4>{{ debate.description }}</h4>
                 </div>
-            </div>
         </div>
 
         <!-- Right Comments Info -->
@@ -103,10 +102,13 @@
                 <li role="presentation" class="active"><a href="{% url 'politics:detail' debate.id %}">View All</a></li>
                 <li role="presentation"><a href="#">Add New Comment</a></li>
                 <li role="presentation"><a href="{% url 'politics:debate-update' debate.id %}">Update Debate</a></li>
+                <form action="{% url 'politics:like_debate'%}" method ="post">
+                	{% csrf_token %}
+                	<button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+                </form>
             </ul>
 
-            <div class="panel panel-default">
-                <div class="panel-body">
+                <div class="thumbnail">
 
                     <h3>All Comments</h3>
 
@@ -150,7 +152,6 @@
                         </tbody>
                     </table>
 
-                </div>
             </div>
 
         </div>

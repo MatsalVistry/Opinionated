@@ -77,25 +77,25 @@
 		 <br>
 		  <br>
   <h2>Sign up</h2>
-  <link rel="stylesheet" href="{% static 'signupbackgroundimage.css' %}">
-  <form method="post">
+  <link rel="stylesheet" href="{% static 'button3.css' %}">
+  <form class="box" method="post">
+  <h1>SIGNUP</h1>
     {% csrf_token %}
     {% for field in form %}
-      
-        {{ field.label_tag }}<br>
-        {{ field }}
-        
+      <p style="color:white">
+        {{ field.label_tag }}
+        {{ field }}        
         {% for error in field.errors %}
           <p style="color: red">{{ error }}</p>
         {% endfor %}
       </p>
-	   <br>
+	 
     {% endfor %}
-	<link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onClick = document.forms[0].submit()>
-	Sign up
 	
-	</div>
+	<input type="submit" onClick = document.forms[0].submit()>
+	
+	
+	
     
   </form>
   </center>

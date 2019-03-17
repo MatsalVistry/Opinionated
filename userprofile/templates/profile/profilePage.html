@@ -61,6 +61,7 @@
 </div>
 </nav>
 
+<link rel="stylesheet" href="{% static 'thumbnailEdit.css' %}">
 <div class="container">
 <div class="thumbnail">
 	<title>Profile</title>
@@ -74,11 +75,8 @@
 	<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;"> Last name:	{{user.last_name}}</p>
 	<p style = "font-family:georgia,garamond,serif;font-size:16px;font-style:italic;">Email: {{user.email}}</p>
 	</center>
-	<center>
-	<link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onclick="location.href = '/profile/edit';">
-	Edit Profile
-	</div>
+	<center>	
+	<input type = "Edit Profile" value= "Edit Profile" id="bttn" onClick="location.href = '/profile/edit';">
 	</center>
 	</thumbnail>
 </div>

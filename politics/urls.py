@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'debate/add/$', views.DebateCreate.as_view(), name = 'debate-add'),
     url(r'debate/(?P<pk>[0-9]+)/$', views.DebateUpdate.as_view(), name = 'debate-update'),
     url(r'debate/(?P<pk>[0-9]+)/delete/$', views.DebateDelete.as_view(), name = 'debate-delete'),
+    url(r'^like/$', views.like_debate, name = 'like_debate'),
 ]

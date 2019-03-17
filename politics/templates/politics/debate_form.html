@@ -77,27 +77,18 @@
 </nav>
 
 
+<link rel="stylesheet" href="{% static 'debate_form.css' %}">
 
 
 
 <div class= "container-fluid">
     <div class="row">
-        <div class="col-sm-20 col-md-10">
-            <div class = "panel panel-default">
-                <div class="panel-body">
+                <div class="thumbnail">
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% include 'politics/form-template.html' %}
-                        <div class= "form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-
+                        <input type="submit" onClick = document.forms[0].submit()>
+                 </form>
+           </div>
     </div>
 </div>

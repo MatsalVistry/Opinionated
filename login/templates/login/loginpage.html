@@ -77,12 +77,13 @@
 		 <br>
 		  <br>
   <h2>Sign in</h2>
-  <p style="color: Black">Please Enter a Valid Username and Password</p>
-  <link rel="stylesheet" href="{% static 'loginbackgroundimage.css' %}">
-  <form method="post">
+
+  <link rel="stylesheet" href="{% static 'button2.css' %}">
+  <form class="box" method="post">
+  <h1>LOGIN</h1>
     {% csrf_token %}
     {% for field in form %}
-      <p>
+      <p style="color:white">
         {{ field.label_tag }}<br>
         {{ field }}
         {% if field.help_text %}
@@ -95,10 +96,8 @@
       </p>
 	   <br>
     {% endfor %}
-	<link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onClick = document.forms[0].submit()>
-	Login
-	</div>
+	
+	<input type="submit" onClick = document.forms[0].submit()>
+
   </form>
  </center>
-

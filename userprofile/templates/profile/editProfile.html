@@ -63,7 +63,8 @@
 </div>
 </nav>
 
-<center>
+
+<link rel="stylesheet" href="{% static 'thumbnailEdit2.css' %}">
 <div class="thumbnail">
 	 <form method="post">
     {% csrf_token %}
@@ -79,21 +80,11 @@
           
         {% endfor %}
       </p>
-	   <br>
     {% endfor %}
     
-    <link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onClick = document.forms[0].submit()>
-	Proceed
-	</div><br>
+	<input type="submit" value="Proceed" onClick = document.forms[0].submit()>
     or
-    <center>
-	<link rel="stylesheet" href="{% static 'buttons.css' %}">
-	<div id="bttn" onclick="location.href = '/profile/password';">
-	Edit Password
-	</div>
-	</center>
+	<input type="edit" value = "Change Password" onClick="location.href = '/profile/password';">
 	
   </form>
 </div>
-</center>
