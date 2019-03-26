@@ -92,6 +92,7 @@
                     <h1>{{ debate.title }} <small>{{ debate.genre }}</small></h1>
                     <h3>{{ debate.username }}</h3>
                     <h4>{{ debate.description }}</h4>
+                    Likes: {{ debate.likes.all.count }}
                 </div>
         </div>
 
@@ -104,7 +105,11 @@
                 <li role="presentation"><a href="{% url 'politics:debate-update' debate.id %}">Update Debate</a></li>
                 <form action="{% url 'politics:like_debate'%}" method ="post">
                 	{% csrf_token %}
-                	<button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-primary">Like</button>
+                	{% if is_liked %}
+                	<button type="submit" name="debate_id" value="{{ debate.id }}" class="btn btn-danger">Dislike</button>
+                    {% else %}
+                    <button type="submit" name="debate_id" value="{{ debate.id }}" class="btn btn-primary">Like</button>
+               		{% endif %}
                 </form>
             </ul>
 

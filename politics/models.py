@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from login.models import UserProfile
 
 class Debate(models.Model):
     username = models.CharField(max_length =20 , blank=True, default='')
