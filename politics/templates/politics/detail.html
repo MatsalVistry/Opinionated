@@ -1,4 +1,3 @@
-
  {% load staticfiles %}
 
 <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -6,7 +5,24 @@
 <link href = 'https:://fonts.googleapis.com/css?family=Satisfy' rel = 'stylesheet' type = 'text/css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type='text/javascript'>
+ $(document).ready(function(event)
+ {
+  $(document).on('click', '#like', function(event)
+  {
+   event.preventDefault();
+   var pk = $(this).attr('value');
+   $.ajax({
+    type: 'POST',
+    url: '{% url "politics:like_debate" %}',
+    data: {'id':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+    dataType: 'json',
+    
+    });
+  });
+ });
+</script>
 
 <nav class= "navbar navbar-inverse">
 <div class = "container-fluid">
@@ -103,14 +119,9 @@
                 <li role="presentation" class="active"><a href="{% url 'politics:detail' debate.id %}">View All</a></li>
                 <li role="presentation"><a href="#">Add New Comment</a></li>
                 <li role="presentation"><a href="{% url 'politics:debate-update' debate.id %}">Update Debate</a></li>
-                <form action="{% url 'politics:like_debate'%}" method ="post">
-                	{% csrf_token %}
-                	{% if is_liked %}
-                	<button type="submit" name="debate_id" value="{{ debate.id }}" class="btn btn-danger">Dislike</button>
-                    {% else %}
-                    <button type="submit" name="debate_id" value="{{ debate.id }}" class="btn btn-primary">Like</button>
-               		{% endif %}
-                </form>
+               <div id="like-section">
+               {% include 'politics/like_section.html' %}
+               </div>
             </ul>
 
                 <div class="thumbnail">

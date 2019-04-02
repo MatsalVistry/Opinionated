@@ -3,10 +3,11 @@ from .models import Debate
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, get_object_or_404
 from urllib import request
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.template import Context
 from django.urls.base import reverse_lazy
+from django.template.loader import render_to_string
 
 class IndexView(generic.ListView):
     template_name = 'politics/index.html'
@@ -41,7 +42,7 @@ def post_detail(request, id, slug):
         }
     return render(request, 'politics/detail.html',context)
 def like_debate(request):
-    post = get_object_or_404(Debate, id=request.POST.get('debate_id'))
+    post = get_object_or_404(Debate, id=request.POST.get('id'))
     is_liked=False
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -49,5 +50,12 @@ def like_debate(request):
     else:
         post.likes.add(request.user)
         is_liked= True
-    return HttpResponseRedirect(post.get_absolute_url())
+    context = {
+        'post': post,
+        'is_liked': is_liked,      
+    }
+    
+    if request.is_ajax():
+        html = render_to_string('politics/like_section.html', context, request=request)
+        return JsonResponse({'form':html})
 
